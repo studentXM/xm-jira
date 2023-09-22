@@ -1,13 +1,13 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 // eslint
-const ESLintPlugin = require('eslint-webpack-plugin');
+const ESLintPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const getLocalIP = require('./plugins/ip')
-const prot = 8080
+const getLocalIP = require("./plugins/ip");
+const prot = 8080;
 const commonConfig = (arg) => {
   const localIP = getLocalIP();
   const port = arg.port || prot;
@@ -20,7 +20,7 @@ const commonConfig = (arg) => {
       clean: true,
       // 出口必须是绝对路径 所以需要使用 node的path模块
       path: path.resolve(__dirname, "../build"),
-      publicPath: "/",
+      publicPath: "",
     },
     stats: "minimal",
     module: {
@@ -28,45 +28,43 @@ const commonConfig = (arg) => {
         {
           test: /\.scss$/,
           use: [
-            'style-loader',
+            "style-loader",
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                  localIdentName: "[name]__[local]--[hash:base64:5]",
                 },
-              }
+              },
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
                 postcssOptions: {
-                  plugins: [
-                    require('autoprefixer')
-                  ]
-                }
-              }
+                  plugins: [require("autoprefixer")],
+                },
+              },
             },
-            'sass-loader'
-          ]
+            "sass-loader",
+          ],
         },
         {
           test: /\.css$/,
           use: [
-            'style-loader',
+            "style-loader",
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                  localIdentName: "[name]__[local]--[hash:base64:5]",
                 },
-              }
+              },
             },
-          ]
+          ],
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg)$/,
-          type: 'asset/resource'
+          type: "asset/resource",
         },
         {
           test: /\.(ts|tsx)$/, // 匹配.ts文件
@@ -74,7 +72,10 @@ const commonConfig = (arg) => {
           use: {
             loader: "babel-loader", // 使用babel-loader进行转换
             options: {
-              presets: [["@babel/preset-env", { targets: "defaults" }], "@babel/preset-typescript"],
+              presets: [
+                ["@babel/preset-env", { targets: "defaults" }],
+                "@babel/preset-typescript",
+              ],
             },
           },
         },
@@ -88,16 +89,18 @@ const commonConfig = (arg) => {
         inject: true,
       }),
       new ESLintPlugin({
-        extensions: ['js', 'jsx', 'ts', 'tsx'], // 指定要检查的文件扩展名
+        extensions: ["js", "jsx", "ts", "tsx"], // 指定要检查的文件扩展名
       }),
       new ForkTsCheckerWebpackPlugin({
-        async: false
+        async: false,
       }),
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
-          messages: [`You application is running here http://${localIP}:${port}`],
+          messages: [
+            `You application is running here http://${localIP}:${port}`,
+          ],
         },
-      })
+      }),
     ],
     resolve: {
       extensions: [".js", ".ts", ".tsx", "css", "scss"], // 添加.ts扩展名
@@ -108,8 +111,6 @@ const commonConfig = (arg) => {
     },
   };
 };
-
-
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const prodConfig = require("./webpack.prod");
