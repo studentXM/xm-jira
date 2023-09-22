@@ -63,6 +63,12 @@
     "lint": "eslint src --ext .jsx,.tsx,.js,.ts",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "*.{jsx,tsx,js,ts}": "eslint --cache --fix",
