@@ -1,10 +1,11 @@
-import React from "react"
 import appStyles from "./App.scss"
-import a from "@/store/index"
-console.log(a)
-
+import { ProjectListScreen } from "./screens/project-list/index.jsx"
 function App() {
-    return <div className={appStyles.box}>hello everyone</div>
+    return (
+        <div className={appStyles.box}>
+            <ProjectListScreen />
+        </div>
+    )
 }
 
 export default App

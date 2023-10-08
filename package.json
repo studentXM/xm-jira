@@ -25,6 +25,7 @@
         "fork-ts-checker-webpack-plugin": "^8.0.0",
         "git-format-staged": "^3.0.0",
         "husky": "^8.0.0",
+        "json-server": "^0.17.4",
         "lint-staged": "^14.0.1",
         "postcss": "^8.4.29",
         "prettier": "3.0.3",
@@ -46,6 +47,7 @@
         "html-entities": "^2.4.0",
         "html-webpack-plugin": "^5.5.3",
         "postcss-loader": "^7.3.3",
+        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sass": "^1.66.1",
@@ -61,7 +63,8 @@
         "type-check": "tsc --noEmit",
         "type-check-watch": "tsc --noEmit",
         "lint": "eslint src --ext .jsx,.tsx,.js,.ts",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "json-server": "json-server --watch __json_server_mock/db.json"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown",
