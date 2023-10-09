@@ -1,4 +1,5 @@
 import PropTypes from "prop-types"
+import { PreventShake } from "@/utils/preventShake"
 export const SearchPanel = ({ users, param, setParam }) => {
     return (
         <form>
@@ -7,13 +8,15 @@ export const SearchPanel = ({ users, param, setParam }) => {
                     type="text"
                     value={param.name}
                     onChange={(evt) => {
-                        setParam({ ...param, name: evt.target.value })
+                        PreventShake(() => {
+                            setParam({ ...param, name: evt.target.value })
+                        }, 1000)()
                     }}
                 />
                 <select
-                    value={param.psersonId}
+                    value={param.personId}
                     onChange={(evt) => {
-                        setParam({ ...param, psersonId: evt.target.value })
+                        setParam({ ...param, personId: evt.target.value })
                     }}
                 >
                     <option value={""}>负责人</option>
