@@ -1,4 +1,4 @@
 const Test = () => {
-    return <div>testFn</div>
+    return <div></div>
 }
 export default Test

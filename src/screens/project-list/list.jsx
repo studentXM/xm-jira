@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 
-export const List = ({ list }) => {
+export const List = ({ users, list }) => {
     return (
         <table>
             <thead>
@@ -13,7 +13,11 @@ export const List = ({ list }) => {
                 {list.map((item) => {
                     return (
                         <tr key={item.id}>
-                            <td></td>
+                            <td>{item.name}</td>
+                            <td>
+                                {users.find((user) => user.id === item.personId)
+                                    ?.name || "未知"}
+                            </td>
                         </tr>
                     )
                 })}
@@ -22,5 +26,6 @@ export const List = ({ list }) => {
     )
 }
 List.propTypes = {
-    list: PropTypes.object.isRequired,
+    list: PropTypes.array.isRequired,
+    users: PropTypes.array.isRequired,
 }

@@ -22,6 +22,7 @@ module.exports = {
     },
     plugins: ["@typescript-eslint", "react", "react-hooks"],
     rules: {
+        "no-alert": 2,
         // 重新配置 react-hooks 相关内容
         "react-hooks/rules-of-hooks": "error",
         // react 必须引入 的警告  关闭

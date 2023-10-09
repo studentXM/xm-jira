@@ -1,8 +1,5 @@
-import { useState } from "react"
 import PropTypes from "prop-types"
-export const SearchPanel = ({ param, setParam }) => {
-    const [users, setUsers] = useState([])
-
+export const SearchPanel = ({ users, param, setParam }) => {
     return (
         <form>
             <div>
@@ -22,7 +19,7 @@ export const SearchPanel = ({ param, setParam }) => {
                     <option value={""}>负责人</option>
                     {users.map((user) => {
                         return (
-                            <option key={user.psersonId} value={user.psersonId}>
+                            <option key={user.id} value={user.id}>
                                 {user.name}
                             </option>
                         )
@@ -35,4 +32,5 @@ export const SearchPanel = ({ param, setParam }) => {
 SearchPanel.propTypes = {
     param: PropTypes.object.isRequired,
     setParam: PropTypes.func.isRequired,
+    users: PropTypes.array.isRequired,
 }

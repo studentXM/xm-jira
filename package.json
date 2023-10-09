@@ -62,7 +62,7 @@
         "typescript": "*"
     },
     "scripts": {
-        "dev": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.common.js --env development",
+        "dev": "cross-env NODE_ENV=development NODE_ENV=development webpack serve --config ./config/webpack.common.js --env development",
         "prod": "cross-env NODE_ENV=production && npm run type-check && webpack --config ./config/webpack.common.js --env production",
         "type-check": "tsc --noEmit",
         "type-check-watch": "tsc --noEmit",

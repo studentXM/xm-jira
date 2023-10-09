@@ -5,8 +5,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
-const dotenv = require('dotenv')
-const env = dotenv.config().parsed
+let dotenv = require('dotenv')
+let env
+if (process.env.NODE_ENV === 'development') {
+    env = require('dotenv').config({ path: '.env.development' }).parsed
+} else {
+    env = require('dotenv').config({ path: '.env' }).parsed
+}
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
