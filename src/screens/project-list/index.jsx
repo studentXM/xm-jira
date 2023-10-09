@@ -1,7 +1,7 @@
 import { SearchPanel } from "./search-panel.jsx"
 import { List } from "./list.jsx"
 import { useEffect, useState } from "react"
-const apiUrl = process.env.REACT_APP_API_URL
+console.log(process.env)
 export const ProjectListScreen = () => {
     const [param, setParam] = useState({
         name: "",
@@ -9,12 +9,12 @@ export const ProjectListScreen = () => {
     })
     const [list, setList] = useState([])
     useEffect(() => {
-        fetch(`${apiUrl}/users`).then(async (response) => {
-            if (response.ok) {
-                setList(await response.json())
-                console.log(list)
-            }
-        })
+        // fetch(`${apiUrl}/users`).then(async (response) => {
+        //     if (response.ok) {
+        //         setList(await response.json())
+        //         console.log(list)
+        //     }
+        // })
     }, [param])
     return <div>123</div>
 }

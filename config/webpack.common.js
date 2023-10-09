@@ -1,8 +1,12 @@
 const path = require('path')
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+
+const dotenv = require('dotenv')
+const env = dotenv.config().parsed
 // eslint
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -107,6 +111,9 @@ const commonConfig = (arg) => {
             }),
             new ForkTsCheckerWebpackPlugin({
                 async: false,
+            }),
+            new webpack.DefinePlugin({
+                'process.env': JSON.stringify(env),
             }),
             new FriendlyErrorsWebpackPlugin({
                 compilationSuccessInfo: {
