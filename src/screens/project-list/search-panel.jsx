@@ -1,6 +1,14 @@
 import PropTypes from "prop-types"
-import { PreventShake } from "@/utils/preventShake"
 export const SearchPanel = ({ users, param, setParam }) => {
+    let isShake = null
+    const search = (evt) => {
+        if (isShake !== null) {
+            clearTimeout(isShake)
+        }
+        isShake = setTimeout(() => {
+            setParam({ ...param, name: evt.target.value })
+        })
+    }
     return (
         <form>
             <div>
@@ -8,9 +16,7 @@ export const SearchPanel = ({ users, param, setParam }) => {
                     type="text"
                     value={param.name}
                     onChange={(evt) => {
-                        PreventShake(() => {
-                            setParam({ ...param, name: evt.target.value })
-                        }, 1000)()
+                        search(evt)
                     }}
                 />
                 <select

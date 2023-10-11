@@ -29,6 +29,7 @@ export const ProjectListScreen = () => {
         )
     }, [param])
 
+    // 仅调用一次
     useMount(() => {
         fetch(`${apiUrl}/users`).then(async (response) => {
             if (response.ok) {
