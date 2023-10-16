@@ -1,14 +1,10 @@
 import PropTypes from "prop-types"
+import { useDebounce } from "@/utils/useDebounce"
+
 export const SearchPanel = ({ users, param, setParam }) => {
-    let isShake = null
-    const search = (evt) => {
-        if (isShake !== null) {
-            clearTimeout(isShake)
-        }
-        isShake = setTimeout(() => {
-            setParam({ ...param, name: evt.target.value })
-        })
-    }
+    const bounce = useDebounce((value) => {
+        setParam({ ...param, name: value })
+    }, 2000)
     return (
         <form>
             <div>
@@ -16,7 +12,7 @@ export const SearchPanel = ({ users, param, setParam }) => {
                     type="text"
                     value={param.name}
                     onChange={(evt) => {
-                        search(evt)
+                        bounce(evt.target.value)
                     }}
                 />
                 <select
