@@ -1,5 +1,7 @@
-import { SearchPanel } from "./search-panel.jsx"
-import { List } from "./list.jsx"
+import { param } from "@/types/paramsForUsers"
+
+import { SearchPanel } from "./search-panel"
+import { List } from "./list"
 import { useEffect, useState } from "react"
 import qs from "qs"
 
@@ -11,21 +13,21 @@ const apiUrl = process.env.REACT_APP_API_URL
 export const ProjectListScreen = () => {
     const [users, setUsers] = useState([])
 
-    const [param, setParam] = useState({
+    const [param, setParam] = useState<param>({
         name: "",
         personId: "",
     })
 
     const [list, setList] = useState([])
 
-    const debounceparam = useDebounce(param, 2000)
+    const debounceparam = useDebounce(param, 300)
 
     useEffect(() => {
-        const query = cleanObject(debounceparam)
+        const query = cleanObject<param>(debounceparam)
         fetch(`${apiUrl}/projects?${qs.stringify(query)}`).then(
             async (response) => {
                 if (response.ok) {
-                    let res = await response.json()
+                    const res = await response.json()
                     setList(res)
                 }
             }
@@ -36,7 +38,7 @@ export const ProjectListScreen = () => {
     useMount(() => {
         fetch(`${apiUrl}/users`).then(async (response) => {
             if (response.ok) {
-                let res = await response.json()
+                const res = await response.json()
                 setUsers(res)
             }
         })

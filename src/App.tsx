@@ -1,5 +1,5 @@
 import appStyles from "./App.scss"
-import { ProjectListScreen } from "./screens/project-list/index.jsx"
+import { ProjectListScreen } from "./screens/project-list"
 
 function App() {
     return (

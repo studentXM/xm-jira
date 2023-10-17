@@ -1,6 +1,13 @@
-import PropTypes from "prop-types"
+import { param } from "@/types/paramsForUsers"
+import { users } from "@/types/users"
+import { Dispatch } from "react"
+interface SearchQuery {
+    users: users
+    param: param
+    setParam: Dispatch<param>
+}
 
-export const SearchPanel = ({ users, param, setParam }) => {
+export const SearchPanel = ({ users, param, setParam }: SearchQuery) => {
     return (
         <form>
             <div>
@@ -29,9 +36,4 @@ export const SearchPanel = ({ users, param, setParam }) => {
             </div>
         </form>
     )
-}
-SearchPanel.propTypes = {
-    param: PropTypes.object.isRequired,
-    setParam: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
 }
