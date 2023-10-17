@@ -5,6 +5,7 @@ import qs from "qs"
 
 import { cleanObject } from "@/utils/queryFormat"
 import { useMount } from "@/utils/useMount"
+import { useDebounce } from "@/utils/useDebounce"
 const apiUrl = process.env.REACT_APP_API_URL
 
 export const ProjectListScreen = () => {
@@ -17,8 +18,10 @@ export const ProjectListScreen = () => {
 
     const [list, setList] = useState([])
 
+    const debounceparam = useDebounce(param, 2000)
+
     useEffect(() => {
-        const query = cleanObject(param)
+        const query = cleanObject(debounceparam)
         fetch(`${apiUrl}/projects?${qs.stringify(query)}`).then(
             async (response) => {
                 if (response.ok) {
@@ -27,7 +30,7 @@ export const ProjectListScreen = () => {
                 }
             }
         )
-    }, [param])
+    }, [debounceparam])
 
     // 仅调用一次
     useMount(() => {

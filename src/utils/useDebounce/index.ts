@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+
 export const useDebounce = (value: unknown, delay: number) => {
-    const [debounceValue, setDebounceValue] = useState(value)
+    const [newValue, setNewValue] = useState(value)
     useEffect(() => {
-        console.log("right")
-        const timeout = setTimeout(() => setDebounceValue(value), delay)
+        const timer = setTimeout(() => {
+            setNewValue(value)
+        }, delay)
+        // 返回的函数是给当前useEffect下一次执行时 的首次执行
         return () => {
-            clearTimeout(timeout)
+            clearTimeout(timer)
         }
     }, [value, delay])
-    return debounceValue
+    return newValue
 }

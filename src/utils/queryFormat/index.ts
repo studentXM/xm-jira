@@ -1,4 +1,4 @@
-// 检查非0的假值
+// 0的值和非0的值 返回false  而本身是假值 就返回true 然后删除掉
 export const isFalsy = (value: unknown) => {
     return value === 0 ? false : !value
 }
