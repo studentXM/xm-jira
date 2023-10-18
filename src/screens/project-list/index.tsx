@@ -4,7 +4,6 @@ import { SearchPanel } from "./search-panel"
 import { List } from "./list"
 import { useEffect, useState } from "react"
 import qs from "qs"
-
 import { cleanObject } from "@/utils/queryFormat"
 import { useMount } from "@/utils/useMount"
 import { useDebounce } from "@/utils/useDebounce"
@@ -43,7 +42,6 @@ export const ProjectListScreen = () => {
             }
         })
     })
-
     return (
         <div>
             <SearchPanel users={users} param={param} setParam={setParam} />
