@@ -7,14 +7,18 @@ import qs from "qs"
 import { cleanObject } from "@/utils/queryFormat"
 import { useMount } from "@/utils/useMount"
 import { useDebounce } from "@/utils/useDebounce"
+import { useAuth } from "@/context/auth-context"
+import { User } from "../../../../imooc-jira/src/types/user"
 const apiUrl = process.env.REACT_APP_API_URL
 
 export const ProjectListScreen = () => {
+    const { user } = useAuth()
     const [users, setUsers] = useState([])
 
     const [param, setParam] = useState<param>({
         name: "",
         personId: "",
+        token: (user as User).token,
     })
 
     const [list, setList] = useState([])

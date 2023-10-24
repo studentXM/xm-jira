@@ -1,14 +1,16 @@
 import appStyles from "./App.scss"
-import { LoginScreen } from "./screens/login"
-// import { ProjectListScreen } from "./screens/project-list"
-// import { TsReactTest } from "@/screens/try-use-array"
-import "./test.less"
+import { useAuth } from "./context/auth-context"
+import { UnanuthenticatedApp } from "./unauthenticated-app/index"
+import { AuthenticatedApp } from "./authenticated-app"
 function App() {
+    const { user } = useAuth()
     return (
         <div className={appStyles.box}>
-            {/* <ProjectListScreen /> */}
-            {/* <TsReactTest /> */}
-            <LoginScreen />
+            {user ? (
+                <AuthenticatedApp></AuthenticatedApp>
+            ) : (
+                <UnanuthenticatedApp></UnanuthenticatedApp>
+            )}
         </div>
     )
 }

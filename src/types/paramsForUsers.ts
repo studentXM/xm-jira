@@ -1,1 +1,1 @@
-export type param = { name: string; personId: string }
+export type param = { name: string; personId: string; token?: string }
