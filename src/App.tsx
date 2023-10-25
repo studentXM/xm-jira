@@ -6,6 +6,7 @@ function App() {
     const { user } = useAuth()
     return (
         <div className={appStyles.box}>
+            {/* 判断是否登陆过/ 登陆显示app组件/未登录显示 对应组件 */}
             {user ? (
                 <AuthenticatedApp></AuthenticatedApp>
             ) : (

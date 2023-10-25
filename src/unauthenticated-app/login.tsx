@@ -1,5 +1,7 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
+import { Button, Form } from "antd"
+import { Input } from "postcss"
 import { FormEvent } from "react"
 
 export const LoginScreen = () => {
@@ -14,17 +16,14 @@ export const LoginScreen = () => {
         login({ username, password })
     }
     return (
-        <form onSubmit={handleSubmit}>
-            longin done ! userName:{user?.name}
-            <div>
-                <label htmlFor="username">用户名</label>
-                <input type="text" id={"username"} />
-            </div>
-            <div>
-                <label htmlFor="passwd">密码</label>
-                <input type="password" id={"passwd"} />
-            </div>
-            <button type={"submit"}>登录</button>
-        </form>
+        <Form onSubmit={handleSubmit}>
+            <Form.Item name={"username"}>
+                <Input placeholder="用户名" type="text" />
+            </Form.Item>
+            <Form.Item name={"password"}>
+                <Input placeholder="密码" type="password" />
+            </Form.Item>
+            <Button type={"submit"}>登录</Button>
+        </Form>
     )
 }
