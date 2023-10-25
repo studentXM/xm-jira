@@ -61,4 +61,3 @@ export const useHttp = () => {
 // Parameters<typeof a> 取出的是 一个存放a形参类型的 数组
 // typeof 就是取得 一个变量的 数据类型 比如 typeof a 就是 ()=>void
 // const x:Parameters<typeof a>[0] = "1awd"
-//
