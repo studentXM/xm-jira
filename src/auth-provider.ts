@@ -3,7 +3,7 @@ const apiUrl = process.env.REACT_APP_API_URL
 // 在真实环境中,如果使用firebase这种第三方auth服务的话,本文件不需要开发者开发
 const localStorageKey = "__auth_provider_token__"
 export function getToken() {
-    return window.localStorage.getItem("localStorageKey")
+    return window.localStorage.getItem(localStorageKey)
 }
 export function handleUserResponse({ user }: { user: User }) {
     window.localStorage.setItem(localStorageKey, user.token || "")

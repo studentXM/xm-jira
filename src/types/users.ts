@@ -6,3 +6,12 @@ export type usersSingle = {
     created: number
 }
 export type users = usersSingle[]
+
+export type User = {
+    id: number
+    name: string
+    email: string
+    title: string
+    organization: string
+    token: string
+}

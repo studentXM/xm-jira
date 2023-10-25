@@ -1,10 +1,9 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
 import { FormEvent } from "react"
-const apiUrl = process.env.REACT_APP_API_URL
 
 export const RegisterScreen = () => {
-    const { user, register } = useAuth()
+    const { register } = useAuth()
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const username = (event.currentTarget.elements[0] as HTMLInputElement)
