@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
 const { merge } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
@@ -25,13 +26,24 @@ const commonConfig = (arg) => {
         entry: './src/index.tsx',
         output: {
             // 设置出口文件的名字
-            filename: 'bundle.js',
+            filename: 'bundle[contenthash].js',
             clean: true,
             // 出口必须是绝对路径 所以需要使用 node的path模块
             path: path.resolve(__dirname, '../build'),
             publicPath: '',
         },
         stats: 'minimal',
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        chunks: 'all',
+                        // 将两个以上的chunk所共享的模块打包至commons组。
+                    },
+                },
+            },
+            usedExports: true,
+        },
         module: {
             rules: [
                 {
@@ -113,6 +125,7 @@ const commonConfig = (arg) => {
                 },
             ],
         },
+
         plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
@@ -136,6 +149,7 @@ const commonConfig = (arg) => {
                     ],
                 },
             }),
+            new WebpackBar(),
         ],
         resolve: {
             extensions: ['.js', '.ts', '.tsx', 'jsx', 'css', 'scss'], // 添加.ts扩展名
