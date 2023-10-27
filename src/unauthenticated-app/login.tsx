@@ -1,13 +1,11 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
 import { Button, Form, Input } from "antd"
-import { FormEvent } from "react"
 
 export const LoginScreen: React.FC = () => {
     console.log(useAuth())
     const { login, user } = useAuth()
     const handleSubmit = (values: { username: string; password: string }) => {
-        // event.preventDefault()
         login(values)
     }
     return (
@@ -25,9 +23,11 @@ export const LoginScreen: React.FC = () => {
                 >
                     <Input placeholder="密码" type="password" />
                 </Form.Item>
-                <Button htmlType={"submit"} type={"primary"}>
-                    登录
-                </Button>
+                <Form.Item style={{ textAlign: "center" }}>
+                    <Button htmlType={"submit"} type={"primary"}>
+                        登录
+                    </Button>
+                </Form.Item>
             </Form>
         </div>
     )

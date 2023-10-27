@@ -1,28 +1,26 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
 import { FormEvent } from "react"
+import { Button, Form, Input } from "antd"
 
 export const RegisterScreen = () => {
     const { register } = useAuth()
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        const username = (event.currentTarget.elements[0] as HTMLInputElement)
-            .value
-        const password = (event.currentTarget.elements[1] as HTMLInputElement)
-            .value
-        register({ username, password })
+    const handleSubmit = (values: { username: string; password: string }) => {
+        register(values)
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="username">用户名</label>
-                <input type="text" id={"username"} />
-            </div>
-            <div>
-                <label htmlFor="passwd">密码</label>
-                <input type="password" id={"passwd"} />
-            </div>
-            <button type={"submit"}>注册</button>
-        </form>
+        <Form onFinish={handleSubmit}>
+            <Form.Item name={"username"}>
+                <Input type="text" placeholder="用户名" />
+            </Form.Item>
+            <Form.Item name={"password"}>
+                <Input type="password" placeholder="密码"></Input>
+            </Form.Item>
+            <Form.Item style={{ textAlign: "center" }}>
+                <Button htmlType={"submit"} type={"primary"}>
+                    注册
+                </Button>
+            </Form.Item>
+        </Form>
     )
 }
