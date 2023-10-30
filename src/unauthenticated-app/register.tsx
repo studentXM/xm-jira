@@ -1,6 +1,5 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
-import { FormEvent } from "react"
 import { Button, Form, Input } from "antd"
 
 export const RegisterScreen = () => {

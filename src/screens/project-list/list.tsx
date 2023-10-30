@@ -7,7 +7,7 @@ type listParam = {
 }
 export const List = ({ users, list }: listParam) => {
     return (
-        <table>
+        <Table>
             <thead>
                 <tr>
                     <th>名称</th>
@@ -29,6 +29,6 @@ export const List = ({ users, list }: listParam) => {
                     )
                 })}
             </tbody>
-        </table>
+        </Table>
     )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import qs from "qs"
 import * as auth from "@/auth-provider"
 import { useAuth } from "@/context/auth-context"
@@ -11,6 +12,7 @@ interface Config extends RequestInit {
 export const http = async (
     endpoint: string,
     // customConfig是剩余参数
+    // eslint-disable-next-line no-unused-vars
     { data, token, headers, ...customConfig }: Config = {}
 ) => {
     const config = {
