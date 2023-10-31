@@ -1,4 +1,4 @@
-import { User } from "./../../imooc-jira/src/types/user"
+import { User } from "@/types/users"
 const apiUrl = process.env.REACT_APP_API_URL
 // 在真实环境中,如果使用firebase这种第三方auth服务的话,本文件不需要开发者开发
 const localStorageKey = "__auth_provider_token__"

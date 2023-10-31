@@ -1,6 +1,5 @@
 import { users, usersSingle } from "@/types/users"
 import { Table } from "antd"
-console.log()
 type listParam = {
     users: users
     list: usersSingle[]

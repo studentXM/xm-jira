@@ -3,17 +3,22 @@ import { param } from "@/types/paramsForUsers"
 import { SearchPanel } from "./search-panel"
 import { List } from "./list"
 import { useEffect, useState } from "react"
+import qs from "qs"
 import { cleanObject } from "@/utils/queryFormat"
 import { useMount } from "@/utils/useMount"
 import { useDebounce } from "@/utils/useDebounce"
-import { useHttp } from "@/utils/http"
+import { useAuth } from "@/context/auth-context"
+import { User } from "@/types/users"
+const apiUrl = process.env.REACT_APP_API_URL
 
 export const ProjectListScreen = () => {
+    const { user } = useAuth()
     const [users, setUsers] = useState([])
-    const client = useHttp()
+
     const [param, setParam] = useState<param>({
         name: "",
         personId: "",
+        token: (user as User).token,
     })
 
     const [list, setList] = useState([])
@@ -21,15 +26,24 @@ export const ProjectListScreen = () => {
     const debounceparam = useDebounce(param, 300)
 
     useEffect(() => {
-        const param = cleanObject<param>(debounceparam)
-        client("projects", { data: param }).then(setList)
-    }, [client, debounceparam])
+        const query = cleanObject<param>(debounceparam)
+        fetch(`${apiUrl}/projects?${qs.stringify(query)}`).then(
+            async (response) => {
+                if (response.ok) {
+                    const res = await response.json()
+                    setList(res)
+                }
+            }
+        )
+    }, [debounceparam])
 
     // 仅调用一次
     useMount(() => {
-        client("users").then((res) => {
-            console.log(res)
-            setUsers(res)
+        fetch(`${apiUrl}/users`).then(async (response) => {
+            if (response.ok) {
+                const res = await response.json()
+                setUsers(res)
+            }
         })
     })
     return (
