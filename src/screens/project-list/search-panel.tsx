@@ -6,7 +6,7 @@ interface SearchQuery {
     param: param
     setParam: Dispatch<param>
 }
-
+//
 export const SearchPanel = ({ users, param, setParam }: SearchQuery) => {
     return (
         <form>

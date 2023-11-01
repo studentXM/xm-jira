@@ -5,9 +5,23 @@ type listParam = {
     list: usersSingle[]
 }
 export const List = ({ users, list }: listParam) => {
+    const columns = [
+        {
+            title: "名称",
+            dataIndex: "name",
+            key: "name",
+        },
+        {
+            title: "负责人",
+            render: (text: string, record: unknown, index: number) => {
+                console.log(text, record, index)
+                return <div>123</div>
+            },
+        },
+    ]
     return (
-        <Table>
-            <thead>
+        <Table dataSource={list} columns={columns}>
+            {/* <thead>
                 <tr>
                     <th>名称</th>
                     <th>负责人</th>
@@ -27,7 +41,7 @@ export const List = ({ users, list }: listParam) => {
                         </tr>
                     )
                 })}
-            </tbody>
+            </tbody> */}
         </Table>
     )
 }
