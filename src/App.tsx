@@ -2,7 +2,7 @@ import appStyles from "./App.scss"
 import { useAuth } from "./context/auth-context"
 import { UnanuthenticatedApp } from "./unauthenticated-app/index"
 import { AuthenticatedApp } from "./authenticated-app"
-import { ConfigProvider, Space } from "antd"
+import { ConfigProvider } from "antd"
 function App() {
     const { user } = useAuth()
     return (

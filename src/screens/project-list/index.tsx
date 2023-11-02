@@ -23,7 +23,7 @@ export const ProjectListScreen = () => {
     useEffect(() => {
         const param = cleanObject<param>(debounceparam)
         client("projects", { data: param }).then(setList)
-    }, [debounceparam])
+    }, [debounceparam, client])
 
     // 仅调用一次
     useMount(() => {

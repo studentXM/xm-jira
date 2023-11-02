@@ -1,13 +1,12 @@
 import qs from "qs"
 import * as auth from "@/auth-provider"
 import { useAuth } from "@/context/auth-context"
-
+import { useCallback } from "react"
 const apiUrl = process.env.REACT_APP_API_URL
 interface Config extends RequestInit {
     data?: object
     token?: string
 }
-
 export const http = async (
     endpoint: string,
     // customConfig是剩余参数
@@ -50,11 +49,15 @@ export const http = async (
 // 再把http封装成hook 供外部使用
 export const useHttp = () => {
     const { user } = useAuth()
+    return useCallback(
+        (...[endpoint, config]: Parameters<typeof http>) => {
+            return http(endpoint, { ...config, token: user?.token })
+        },
+        [user]
+    )
     // 函数中声明形参时 放数组内 并展开数组 就代表函数的形参会存在该数组内,并且该数组也可以解构出来
     // 这里的typeof 是ts中的typeof 也就是静态的 不是 js运行时的 typeof
     // 这里的typeof 后面传递一个变量 把它的类型提取出来 Parameters<typeof >
-    return (...[endpoint, config]: Parameters<typeof http>) =>
-        http(endpoint, { ...config, token: user?.token })
 }
 // 以下代码是 Parameters的示例
 // const a = (name:string)=>{}

@@ -3,8 +3,8 @@ import { useAuth } from "@/context/auth-context"
 import { Button, Form, Input } from "antd"
 
 export const LoginScreen: React.FC = () => {
-    console.log(useAuth())
-    const { login, user } = useAuth()
+    // console.log(useAuth())
+    const { login } = useAuth()
     const handleSubmit = (values: { username: string; password: string }) => {
         login(values)
     }
