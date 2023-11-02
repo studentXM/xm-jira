@@ -1,13 +1,9 @@
-:global {
-    @keyframes show {
-        from {
-            opacity: 0;
-            transform: translateX(-10%);
-        }
+html {
+    // 16(浏览器默认字体大小) * 0.625 = 10
+    font-size: 62.5%;
+    // 方便换算
+}
 
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
+html body #root .App {
+    min-height: 100vh;
 }

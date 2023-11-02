@@ -33,7 +33,6 @@ export const http = async (
     } else {
         config.body = JSON.stringify(data || {})
     }
-
     return window.fetch(`${apiUrl}/${endpoint}`, config).then(async (res) => {
         // 状态值 判断 > 退出登陆
         if (res.status === 401) {
