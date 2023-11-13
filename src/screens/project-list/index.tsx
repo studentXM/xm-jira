@@ -21,7 +21,6 @@ export const ProjectListScreen = () => {
     const [param, setParam] = useState<param>({
         name: "",
         personId: "",
-        token: (user as User).token,
     })
     const [list, setList] = useState([])
 
