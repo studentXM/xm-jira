@@ -18,6 +18,7 @@ export const http = async (
         headers: {
             Authorization: token ? `Bearer ${token}` : "",
             "Content-type": data ? "application/json" : "",
+            ...headers
         },
         // 传递配置
         ...customConfig,
