@@ -3,19 +3,12 @@ import { param } from "@/types/paramsForUsers"
 import { SearchPanel } from "./search-panel"
 import { List } from "./list"
 import { useEffect, useState } from "react"
-// import qs from "qs"
-// import { cleanObject } from "@/utils/queryFormat"
 import { useMount } from "@/utils/useMount"
 import { useDebounce } from "@/utils/useDebounce"
-import { useAuth } from "@/context/auth-context"
-import { User } from "@/types/users"
 import { useHttp } from "@/utils"
-// import * as qs from "qs"
 import { cleanObject } from "@/utils/queryFormat"
-// const apiUrl = process.env.REACT_APP_URL
 
 export const ProjectListScreen = () => {
-    const { user } = useAuth()
     const [users, setUsers] = useState([])
     const req = useHttp()
     const [param, setParam] = useState<param>({

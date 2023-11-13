@@ -1,9 +1,11 @@
 import { users, usersSingle } from "@/types/users"
 import { Table } from "antd"
+
 type listParam = {
     users: users
     list: usersSingle[]
 }
+
 export const List = ({ users, list }: listParam) => {
     const columns = [
         {
@@ -11,6 +13,7 @@ export const List = ({ users, list }: listParam) => {
             dataIndex: "name",
             key: "name",
             sorter: (a: usersSingle, b: usersSingle) => {
+                console.log(a, b)
                 // a.name相隔b.name 字符串的距离 例："a".localeCompare("b") == -1
                 return a.id - b.id
             },
