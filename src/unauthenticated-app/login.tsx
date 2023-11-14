@@ -1,7 +1,7 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
-import { Button, Form, Input } from "antd"
-
+import { Form, Input } from "antd"
+import { LoangBtn } from "./index"
 export const LoginScreen: React.FC = () => {
     // console.log(useAuth())
     const { login } = useAuth()
@@ -24,9 +24,9 @@ export const LoginScreen: React.FC = () => {
                     <Input placeholder="密码" type="password" />
                 </Form.Item>
                 <Form.Item style={{ textAlign: "center" }}>
-                    <Button htmlType={"submit"} type={"primary"}>
+                    <LoangBtn htmlType={"submit"} type={"primary"}>
                         登录
-                    </Button>
+                    </LoangBtn>
                 </Form.Item>
             </Form>
         </div>

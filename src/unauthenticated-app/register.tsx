@@ -1,7 +1,7 @@
 // 事件中的参数类型
 import { useAuth } from "@/context/auth-context"
-import { Button, Form, Input } from "antd"
-
+import { Form, Input } from "antd"
+import { LoangBtn } from "./index"
 export const RegisterScreen = () => {
     const { register } = useAuth()
     const handleSubmit = (values: { username: string; password: string }) => {
@@ -16,9 +16,9 @@ export const RegisterScreen = () => {
                 <Input type="password" placeholder="密码"></Input>
             </Form.Item>
             <Form.Item style={{ textAlign: "center" }}>
-                <Button htmlType={"submit"} type={"primary"}>
+                <LoangBtn htmlType={"submit"} type={"primary"}>
                     注册
-                </Button>
+                </LoangBtn>
             </Form.Item>
         </Form>
     )
