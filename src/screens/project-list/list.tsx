@@ -13,7 +13,6 @@ export const List = ({ users, list }: listParam) => {
             dataIndex: "name",
             key: "name",
             sorter: (a: usersSingle, b: usersSingle) => {
-                console.log(a, b)
                 // a.name相隔b.name 字符串的距离 例："a".localeCompare("b") == -1
                 return a.id - b.id
             },
@@ -28,6 +27,15 @@ export const List = ({ users, list }: listParam) => {
                         )?.name || "未知"}
                     </span>
                 )
+            },
+        },
+        {
+            title: "创建时间",
+            key: "created",
+            dataIndex: "created",
+            sorter: (a: usersSingle, b: usersSingle) => {
+                // a.name相隔b.name 字符串的距离 例："a".localeCompare("b") == -1
+                return a.created - b.created
             },
         },
     ]

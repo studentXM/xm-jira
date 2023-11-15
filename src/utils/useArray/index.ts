@@ -5,7 +5,6 @@ export const useArray = <T>(value: T[]) => {
     const [param, setParam] = useState("")
     return {
         remove(index: number) {
-            console.log(index)
             const arr = [...newValue]
             arr.splice(index, 1)
             setNewValue(arr)

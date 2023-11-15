@@ -13,16 +13,18 @@ export const SearchPanel = ({ users, param, setParam }: SearchQuery) => {
     const r = users.map((item) => ({ label: item.name, value: item.name }))
     console.log(r)
     return (
-        <Form>
+        <Form style={{ marginBottom: "2rem" }} layout="inline">
             <Form.Item style={{ display: "flex" }}>
                 <Input
-                    placeholder="搜索项目"
+                    placeholder="项目名称"
                     type="text"
                     value={param.name}
                     onChange={(e) => {
                         setParam({ ...param, name: e.target.value })
                     }}
                 ></Input>
+            </Form.Item>
+            <Form.Item>
                 <Select
                     allowClear
                     // optionFilterProp="children"
