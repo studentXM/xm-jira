@@ -32,7 +32,7 @@ module.exports = {
         "react-hooks/exhaustive-deps": "off",
         eqeqeq: "off",
         curly: "error",
-        quotes: ["error"],
+        quotes: ["warn"],
     },
     ignorePatterns: ["webpack.common.js", "webpack.dev.js", "webpack.prod.js"],
     settings: {
