@@ -11,7 +11,6 @@ interface SearchQuery {
 //
 export const SearchPanel = ({ users, param, setParam }: SearchQuery) => {
     const r = users.map((item) => ({ label: item.name, value: item.name }))
-    console.log(r)
     return (
         <Form style={{ marginBottom: "2rem" }} layout="inline">
             <Form.Item style={{ display: "flex" }}>
