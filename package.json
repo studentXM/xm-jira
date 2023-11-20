@@ -75,7 +75,7 @@
         "type-check-watch": "tsc --noEmit",
         "lint": "eslint src --ext .jsx,.tsx,.js,.ts",
         "prepare": "husky install",
-        "json-server": "json-server --watch __json_server_mock/db.json --port 3300"
+        "json-server": "json-server __json_server_mock/db.json --watch  --port 3300 --middlewares ./__json_server_mock/middleware.js"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown",
